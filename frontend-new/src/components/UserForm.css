@@ -1,0 +1,104 @@
+.signup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    padding: 20px;
+  }
+  
+  .signup-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signup-header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a3c34;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .signup-subtext {
+    font-size: 1rem;
+    color: #5e6e66;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .signup-field-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-field {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #1a3c34;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .signup-field:focus {
+    border-color: #2ecc71;
+    outline: none;
+  }
+  
+  .signup-field.error {
+    border-color: #d32f2f;
+  }
+  
+  .error-text {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 5px;
+  }
+  
+  .signup-submit {
+    padding: 12px;
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .signup-submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #5e6e66;
+  }
+  
+  .login-link a {
+    color: #2ecc71;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
