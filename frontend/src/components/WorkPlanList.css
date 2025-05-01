@@ -1,0 +1,143 @@
+.workplan-list-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .workplan-list-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .workplan-list-card h2 {
+    font-size: 1.8rem;
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+  
+  .workplan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .workplan-item {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .workplan-item h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .workplan-item p {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin: 5px 0;
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #e74c3c;
+  }
+  
+  .workplan-item-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .workplan-item-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .workplan-item-btn.edit {
+    background: #3498db;
+    color: #fff;
+  }
+  
+  .workplan-item-btn.edit:hover {
+    background: #2980b9;
+  }
+  
+  .workplan-item-btn.delete {
+    background: #e74c3c;
+    color: #fff;
+  }
+  
+  .workplan-item-btn.delete:hover {
+    background: #c0392b;
+  }
+  
+  .workplan-list-buttons {
+    margin-top: 20px;
+  }
+  
+  .workplan-list-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .workplan-list-btn.back {
+    background: #7f8c8d;
+    color: #fff;
+  }
+  
+  .workplan-list-btn.back:hover {
+    background: #6c7a89;
+  }
+  
+  .loading {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    .workplan-list-card {
+      padding: 20px;
+    }
+  
+    .workplan-item h3 {
+      font-size: 1.2rem;
+    }
+  
+    .workplan-item p {
+      font-size: 0.9rem;
+    }
+  
+    .workplan-item-btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+  
+    .workplan-list-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
