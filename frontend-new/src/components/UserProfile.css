@@ -1,0 +1,100 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    padding: 40px 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  
+  .profile-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a3c34;
+  }
+  
+  .logout-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-section {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  
+  .profile-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a3c34;
+    margin-bottom: 15px;
+  }
+  
+  .posts-grid, .workplans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .post-card, .workplan-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+  }
+  
+  .post-card h4, .workplan-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a3c34;
+    margin-bottom: 10px;
+  }
+  
+  .post-card p, .workplan-card p {
+    font-size: 0.95rem;
+    color: #344e41;
+  }
+  
+  .no-posts, .no-workplans {
+    font-size: 1rem;
+    color: #5e6e66;
+    font-style: italic;
+  }
+  
+  .loading-spinner {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #1a3c34;
+    padding: 20px;
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    text-align: center;
+    font-size: 1.1rem;
+  }
