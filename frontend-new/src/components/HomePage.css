@@ -1,0 +1,46 @@
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .home-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a3c34;
+    margin-bottom: 15px;
+  }
+  
+  .home-subtitle {
+    font-size: 1.2rem;
+    color: #5e6e66;
+    margin-bottom: 30px;
+  }
+  
+  .home-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .home-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .home-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
