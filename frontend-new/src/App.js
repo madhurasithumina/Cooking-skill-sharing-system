@@ -11,6 +11,7 @@ import WorkPlanEdit from './components/WorkPlanEdit';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';
 import PostEdit from './components/PostEdit';
+import Explore from './components/Explore'; // Add this import
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/post/create" element={<PostForm />} />
           <Route path="/post/list" element={<PostList />} />
           <Route path="/post/edit/:id" element={<PostEdit />} />
+          <Route path="/explore" element={<Explore />} /> {/* Add this route */}
         </Routes>
       </div>
     </Router>

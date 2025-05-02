@@ -34,17 +34,15 @@ const HomePage = () => {
   }, [searchQuery, users]);
 
   const handleProfile = () => navigate('/profile');
-
   const handleLogout = () => {
     localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
     navigate('/');
   };
-
   const viewProfile = (userId) => navigate(`/profile/${userId}`);
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+  const handleSearchChange = (e) => setSearchQuery(e.target.value);
+  const handleExploreClick = () => navigate('/explore'); // Navigate to Explore page
 
   return (
     <div className="home-wrapper">
@@ -66,6 +64,9 @@ const HomePage = () => {
           </button>
           <button className="nav-btn logout" onClick={handleLogout}>
             Logout
+          </button>
+          <button className="nav-btn explore" onClick={handleExploreClick}>
+            Explore
           </button>
         </nav>
       </header>
