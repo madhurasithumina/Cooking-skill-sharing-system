@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { createUser } from '../services/api';
 import './UserForm.css';
 
-const UserForm = () => {
+const UserForm = ({ onSave }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    bio: '',
+    profilePicture: '', // Add profilePicture to formData
+  });
   const [errors, setErrors] = useState({});
+  const [preview, setPreview] = useState(null); // For image preview
 
+  // Validation function
   const validateField = (name, value) => {
     let error = '';
     if (name === 'username') {
@@ -26,13 +34,41 @@ const UserForm = () => {
     return error;
   };
 
+  // Handle text input changes with live validation
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Validate in real-time as the user types
     const error = validateField(name, value);
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
   };
 
+  // Handle file input change
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 1024 * 1024) { // 1MB limit
+        Swal.fire({
+          icon: 'error',
+          title: 'File Too Large',
+          text: 'Please upload an image under 1MB.',
+        });
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, profilePicture: reader.result });
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {
@@ -52,46 +88,35 @@ const UserForm = () => {
     }
 
     try {
-      const userData = await createUser(formData);
-      if (!userData || !userData.userId) {
-        throw new Error('Invalid response from server: No user ID found');
-      }
+      const response = await createUser(formData);
+      localStorage.setItem('userId', response.id); // Store userId
       Swal.fire({
         icon: 'success',
-        title: 'Registration Successful!',
-        text: `Welcome, ${formData.username}! Please log in.`,
+        title: 'Success!',
+        text: 'User created successfully.',
         timer: 1500,
         showConfirmButton: false,
       }).then(() => {
         navigate('/login');
+        if (onSave) onSave();
       });
     } catch (error) {
-      let errorMessage = 'Registration failed. Please try again.';
-      if (error.message.includes('Network Error')) {
-        errorMessage = 'Cannot connect to the server. Please ensure the backend is running on http://localhost:8081.';
-      } else if (error.response) {
-        if (error.response.status === 400) {
-          errorMessage = 'Email already exists.';
-        } else {
-          errorMessage = `Server error: ${error.response.status}`;
-        }
-      }
       Swal.fire({
         icon: 'error',
-        title: 'Registration Failed',
-        text: errorMessage,
+        title: 'Oops...',
+        text: 'Failed to create user. Please try again.',
       });
-      console.error('Registration error:', error.response || error.message);
+      console.error('Error saving user:', error);
     }
   };
 
   return (
     <div className="signup-wrapper">
       <div className="signup-card">
-        <h2 className="signup-header">Join Us</h2>
-        <p className="signup-subtext">Create an account to start sharing your cooking skills!</p>
+        <h2 className="signup-header">Create Your Account</h2>
+        <p className="signup-subtext">Sign up to start your cooking journey!</p>
         <form onSubmit={handleSubmit} className="signup-form">
-          <div className="signup-field-wrapper">
+          <div className="form-field">
             <input
               type="text"
               name="username"
@@ -102,7 +127,7 @@ const UserForm = () => {
             />
             {errors.username && <p className="error-text">{errors.username}</p>}
           </div>
-          <div className="signup-field-wrapper">
+          <div className="form-field">
             <input
               type="email"
               name="email"
@@ -113,7 +138,7 @@ const UserForm = () => {
             />
             {errors.email && <p className="error-text">{errors.email}</p>}
           </div>
-          <div className="signup-field-wrapper">
+          <div className="form-field">
             <input
               type="password"
               name="password"
@@ -125,11 +150,29 @@ const UserForm = () => {
             />
             {errors.password && <p className="error-text">{errors.password}</p>}
           </div>
+          <div className="form-field">
+            <input
+              type="text"
+              name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              placeholder="Tell us about yourself"
+              className="signup-field"
+            />
+          </div>
+          <div className="form-field">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="signup-file-field"
+            />
+            {preview && (
+              <img src={preview} alt="Preview" className="signup-image-preview" />
+            )}
+          </div>
           <button type="submit" className="signup-submit">Sign Up</button>
         </form>
-        <p className="login-link">
-          Already have an account? <Link to="/login">Log in here</Link>
-        </p>
       </div>
     </div>
   );

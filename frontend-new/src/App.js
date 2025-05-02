@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LandingPage from './components/LandingPage/LandingPage';
-import UserForm from './components/UserForm/UserForm';
-import LoginForm from './components/LoginForm/LoginForm';
-import UserProfile from './components/UserProfile/UserProfile';
-import HomePage from './components/HomePage/HomePage';
-import WorkPlanForm from './components/WorkPlanForm/WorkPlanForm';
-import WorkPlanList from './components/WorkPlanList/WorkPlanList';
-import WorkPlanEdit from './components/WorkPlanEdit/WorkPlanEdit';
-import PostForm from './components/PostForm/PostForm';
-import PostList from './components/PostList/PostList';
-import PostEdit from './components/PostEdit/PostEdit';
+import LandingPage from './components/LandingPage';
+import UserForm from './components/UserForm';
+import LoginForm from './components/LoginForm';
+import UserProfile from './components/UserProfile';
+import HomePage from './components/HomePage';
+import WorkPlanForm from './components/WorkPlanForm';
+import WorkPlanList from './components/WorkPlanList';
+import WorkPlanEdit from './components/WorkPlanEdit';
+import PostForm from './components/PostForm';
+import PostList from './components/PostList';
+import PostEdit from './components/PostEdit';
 import './App.css';
 
 function App() {

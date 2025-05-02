@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
 
+  // Validation function
   const validateField = (name, value) => {
     let error = '';
     if (name === 'email') {
@@ -22,13 +23,18 @@ const LoginForm = () => {
     return error;
   };
 
+  // Handle input changes with live validation
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     const error = validateField(name, value);
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {
@@ -47,13 +53,13 @@ const LoginForm = () => {
     }
 
     try {
-      const userData = await loginUser(formData);
+      const userData = await loginUser(formData); // Call login API
       if (!userData || !userData.userId) {
         throw new Error('Invalid response from server: No user ID found');
       }
-      localStorage.setItem('userId', userData.userId);
-      localStorage.setItem('token', userData.token || '');
-      localStorage.setItem('username', userData.username || 'User');
+      localStorage.setItem('userId', userData.userId); // Store user ID
+      localStorage.setItem('token', userData.token || ''); // Store token if available
+      localStorage.setItem('username', userData.username || 'User'); // Store username
       Swal.fire({
         icon: 'success',
         title: 'Login Successful!',
@@ -61,7 +67,7 @@ const LoginForm = () => {
         timer: 1500,
         showConfirmButton: false,
       }).then(() => {
-        navigate(`/profile/${userData.userId}`);
+        navigate(`/profile`); // Navigate to profile with userId
       });
     } catch (error) {
       let errorMessage = 'Invalid email or password. Please try again.';
@@ -111,7 +117,7 @@ const LoginForm = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              autoComplete="new-password"
+              autoComplete="new-password" // Prevents autofill
               className={`login-field ${errors.password ? 'error' : ''}`}
             />
             {errors.password && <p className="error-text">{errors.password}</p>}
