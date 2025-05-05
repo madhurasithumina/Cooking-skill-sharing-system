@@ -15,7 +15,7 @@ const WorkPlanForm = () => {
     endDate: '',
     status: 'In Progress',
   });
-  const [errors, setErrors] = useState({ /form input field/
+  const [errors, setErrors] = useState({ 
     title: '',
     description: '',
     topics: '',
