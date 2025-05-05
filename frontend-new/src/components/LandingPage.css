@@ -1,0 +1,313 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .landing-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #ffe066 0%, #ff6b6b 50%, #d63031 100%);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Header */
+  .landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .landing-nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #fff;
+    color: #e74c3c;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-btn.signup {
+    background: #e74c3c;
+    color: #fff;
+  }
+  
+  .nav-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav-btn.signup:hover {
+    background: #c0392b;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    min-height: 70vh;
+  }
+  
+  .hero-content {
+    max-width: 50%;
+    animation: slideInLeft 1s ease-out;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+    margin: 20px 0 30px;
+    color: #f5f6fa;
+    opacity: 0.9;
+  }
+  
+  .hero-cta {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-cta:hover {
+    background: #e74c3c;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+  }
+  
+  .hero-visual {
+    position: relative;
+    width: 50%;
+    height: 400px;
+    animation: fadeIn 1.5s ease-in;
+  }
+  
+  .cooking-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+  }
+  
+  .ingredient {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: orbit 6s infinite linear;
+  }
+  
+  .ingredient.tomato {
+    background: radial-gradient(circle, #ff6347, #e74c3c);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+  }
+  
+  .ingredient.basil {
+    background: radial-gradient(circle, #2ecc71, #27ae60);
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    animation-delay: 2s;
+  }
+  
+  .ingredient.cheese {
+    background: radial-gradient(circle, #f1c40f, #e67e22);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 4s;
+  }
+  
+  /* Features Section */
+  .features-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  
+  .features-title {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 1rem;
+    color: #7f8c8d;
+  }
+  
+  /* Footer */
+  .landing-footer {
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  
+  /* Animations */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes orbit {
+    0% {
+      transform: translateX(-50%) rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) rotate(360deg) translateX(150px) rotate(-360deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hero-section {
+      flex-direction: column;
+      padding: 60px 20px;
+    }
+  
+    .hero-content,
+    .hero-visual {
+      max-width: 100%;
+      text-align: center;
+    }
+  
+    .hero-title {
+      font-size: 2.8rem;
+    }
+  
+    .hero-visual {
+      height: 300px;
+    }
+  
+    .cooking-orbit {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .ingredient {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .landing-header {
+      padding: 15px 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .hero-title {
+      font-size: 2rem;
+    }
+  
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+  
+    .hero-cta {
+      padding: 12px 30px;
+      font-size: 1rem;
+    }
+  
+    .features-title {
+      font-size: 2rem;
+    }
+  }
