@@ -22,7 +22,7 @@ const UserProfile = () => {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
   const [posts, setPosts] = useState([]);
-  const [postInteractions, setPostInteractions] = useState({}); // Store likes and comments for each post
+  const [postInteractions, setPostInteractions] = useState({}); // Store likes and comments with usernames
   const isOwnProfile = !userId || userId === currentUserId;
 
   useEffect(() => {
@@ -45,14 +45,14 @@ const UserProfile = () => {
         const userPosts = await getPostsByUserId(targetId);
         setPosts(userPosts);
 
-        // Fetch likes and comments for each post
+        // Fetch likes and comments with usernames for each post
         const interactions = {};
         for (const post of userPosts) {
-          const likes = await getLikesByPostId(post.id);
-          const comments = await getCommentsByPostId(post.id);
+          const likes = await getLikesByPostId(post.id); // Assuming { id, username, postId }
+          const comments = await getCommentsByPostId(post.id); // Assuming { id, username, comment }
           interactions[post.id] = {
-            likes: likes.length,
-            comments: comments.length
+            likes: likes.map(like => like.username),
+            comments: comments
           };
         }
         setPostInteractions(interactions);
@@ -141,6 +141,11 @@ const UserProfile = () => {
   const handleViewWorkPlanList = () => navigate('/workplan/list');
   const handleAddPost = () => navigate('/post/create');
   const handleViewPosts = () => navigate('/post/list');
+
+  // Handle navigation to user profile
+  const handleUserProfile = (targetUserId) => {
+    navigate(`/profile/${targetUserId}`);
+  };
 
   if (!user) return <div className="loading">Loading...</div>;
 
@@ -260,11 +265,39 @@ const UserProfile = () => {
                 <div className="post-interactions">
                   <div className="interaction">
                     <span className="icon like-icon">❤️</span>
-                    <span>{postInteractions[post.id]?.likes || 0}</span>
+                    <span>{postInteractions[post.id]?.likes.length || 0} Likes</span>
+                    {postInteractions[post.id]?.likes.length > 0 && (
+                      <div className="likes-list">
+                        {postInteractions[post.id].likes.map((username, index) => (
+                          <span 
+                            key={index} 
+                            className="like-username" 
+                            onClick={() => handleUserProfile(username)} // Navigate to user profile
+                          >
+                            {username}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div className="interaction">
                     <span className="icon comment-icon">💬</span>
-                    <span>{postInteractions[post.id]?.comments || 0}</span>
+                    <span>{postInteractions[post.id]?.comments.length || 0} Comments</span>
+                    {postInteractions[post.id]?.comments.length > 0 && (
+                      <div className="comments-list">
+                        {postInteractions[post.id].comments.map((comment, index) => (
+                          <div key={index} className="comment">
+                            <span 
+                              className="comment-username" 
+                              onClick={() => handleUserProfile(comment.username)} // Navigate to user profile
+                            >
+                              {comment.username}
+                            </span>
+                            : <span className="comment-text">{comment.comment}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
