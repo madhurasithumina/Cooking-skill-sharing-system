@@ -15,6 +15,7 @@ const LandingPage = () => {
 
   return (
     <div className="landing-wrapper">
+      <div className="background-overlay"></div>
       <header className="landing-header">
         <div className="logo">🍳 SkillCook</div>
         <nav className="landing-nav">
@@ -59,6 +60,11 @@ const LandingPage = () => {
             <p>Connect with food lovers like you.</p>
           </div>
         </div>
+      </section>
+      <section className="cta-banner">
+        <h2 className="cta-title">Ready to Cook Like a Pro?</h2>
+        <p className="cta-subtitle">Join SkillCook today and start your culinary adventure!</p>
+        <button className="cta-button" onClick={handleSignUp}>Get Started</button>
       </section>
       <footer className="landing-footer">
         <p>© 2025 SkillCook - Where Culinary Dreams Come Alive</p>
