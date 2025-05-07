@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAllUsers, getFollowing } from '../services/api';
 import FollowButton from './FollowButton';
 import './HomePage.css';
+import regImage from '../assets/reg.jpg'; // Import the image
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const HomePage = () => {
     fetchUsers();
   }, [currentUserId]);
 
-  // Filter users based on search query
   useEffect(() => {
     const filtered = users.filter(user =>
       user.username.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,10 +42,22 @@ const HomePage = () => {
   };
   const viewProfile = (userId) => navigate(`/profile/${userId}`);
   const handleSearchChange = (e) => setSearchQuery(e.target.value);
-  const handleExploreClick = () => navigate('/explore'); // Navigate to Explore page
+  const handleExploreClick = () => navigate('/explore');
 
   return (
-    <div className="home-wrapper">
+    <div
+      className="home-wrapper"
+      style={{
+        backgroundImage: `url(${regImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        imageRendering: '-webkit-optimize-contrast',
+        imageRendering: 'crisp-edges',
+        imageRendering: 'pixelated',
+      }}
+    >
       <header className="home-header">
         <div className="header-logo">
           <span className="logo-icon">🍳</span>
