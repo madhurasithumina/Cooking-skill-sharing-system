@@ -1,116 +1,245 @@
+/* Workplan List Container */
 .workplan-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-    padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Subtle gradient background */
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50; /* Dark slate for contrast */
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  animation: fadeInDown 1s ease-out;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, #2980b9, #3498db); /* Blue gradient underline */
+  border-radius: 2.5px;
+}
+
+/* Workplans Grid */
+.workplans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Workplan Card */
+.workplan-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  animation: slideUp 0.8s ease-out;
+}
+
+.workplan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Workplan Card Content */
+.workplan-card h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  padding: 20px 20px 10px;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(200, 240, 255, 0.5)); /* Subtle gradient */
+  border-bottom: 2px solid #3498db;
+}
+
+.workplan-card p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  padding: 15px 20px;
+  margin: 0;
+  line-height: 1.6;
+  min-height: 100px; /* Ensure cards have consistent height */
+}
+
+/* Workplan Actions */
+.workplan-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: #f5f7fa;
+  border-top: 1px solid #dfe6e9;
+}
+
+/* Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.edit-btn {
+  background: #3498db;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+  padding: 40px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Error Message */
+.error-message {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  text-align: center;
+  padding: 40px;
+  animation: shake 0.5s ease;
+}
+
+/* No Workplans Message */
+.no-workplans {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  text-align: center;
+  padding: 40px;
+  animation: fadeIn 1s ease-out;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .workplan-list-container h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a3c34;
-    margin-bottom: 30px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .error-message {
-    color: #d32f2f;
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .loading-spinner {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #1a3c34;
-    padding: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .workplans-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
   }
-  
-  .workplan-card {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  h2 {
+    font-size: 2rem;
   }
-  
-  .workplan-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-  }
-  
+
   .workplan-card h4 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #1a3c34;
-    margin: 0 0 10px;
+    font-size: 1.2rem;
   }
-  
+
   .workplan-card p {
-    font-size: 1rem;
-    color: #344e41;
-    line-height: 1.6;
-    margin: 0 0 15px;
+    font-size: 0.95rem;
+    min-height: 80px;
   }
-  
-  .workplan-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+}
+
+@media (max-width: 480px) {
+  .workplans-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .edit-btn, .delete-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  h2 {
+    font-size: 1.8rem;
   }
-  
-  .edit-btn {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-    color: white;
-  }
-  
-  .edit-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .delete-btn {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-    color: white;
-  }
-  
-  .delete-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .no-workplans {
-    text-align: center;
+
+  .workplan-card h4 {
     font-size: 1.1rem;
-    color: #5e6e66;
-    font-style: italic;
-    padding: 20px 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
   }
+
+  .workplan-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .no-workplans {
+    font-size: 1rem;
+    padding: 20px;
+  }
+}
