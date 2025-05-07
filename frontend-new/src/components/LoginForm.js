@@ -3,13 +3,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { loginUser } from '../services/api';
 import './LoginForm.css';
+import regImage from '../assets/reg.jpg'; // Import the image
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
 
-  // Validation function
   const validateField = (name, value) => {
     let error = '';
     if (name === 'email') {
@@ -23,7 +23,6 @@ const LoginForm = () => {
     return error;
   };
 
-  // Handle input changes with live validation
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -34,7 +33,6 @@ const LoginForm = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {
@@ -53,13 +51,13 @@ const LoginForm = () => {
     }
 
     try {
-      const userData = await loginUser(formData); // Call login API
+      const userData = await loginUser(formData);
       if (!userData || !userData.userId) {
         throw new Error('Invalid response from server: No user ID found');
       }
-      localStorage.setItem('userId', userData.userId); // Store user ID
-      localStorage.setItem('token', userData.token || ''); // Store token if available
-      localStorage.setItem('username', userData.username || 'User'); // Store username
+      localStorage.setItem('userId', userData.userId);
+      localStorage.setItem('token', userData.token || '');
+      localStorage.setItem('username', userData.username || 'User');
       Swal.fire({
         icon: 'success',
         title: 'Login Successful!',
@@ -67,7 +65,7 @@ const LoginForm = () => {
         timer: 1500,
         showConfirmButton: false,
       }).then(() => {
-        navigate(`/profile`); // Navigate to profile with userId
+        navigate(`/profile`);
       });
     } catch (error) {
       let errorMessage = 'Invalid email or password. Please try again.';
@@ -94,7 +92,19 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <div
+      className="login-wrapper"
+      style={{
+        backgroundImage: `url(${regImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        imageRendering: '-webkit-optimize-contrast',
+        imageRendering: 'crisp-edges',
+        imageRendering: 'pixelated',
+      }}
+    >
       <div className="login-card">
         <h2 className="login-header">Welcome Back</h2>
         <p className="login-subtext">Log in to continue your cooking journey!</p>
@@ -117,7 +127,7 @@ const LoginForm = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              autoComplete="new-password" // Prevents autofill
+              autoComplete="new-password"
               className={`login-field ${errors.password ? 'error' : ''}`}
             />
             {errors.password && <p className="error-text">{errors.password}</p>}
