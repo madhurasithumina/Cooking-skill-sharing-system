@@ -1,98 +1,231 @@
+/* Post Edit Container */
 .post-edit-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-    padding: 40px 20px;
+  min-height: 100vh;
+  background: #fbf6f6; /* White background */
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Title */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #34495e; /* Darker gray-blue for contrast */
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  animation: fadeInDown 1s ease-out;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient underline (blue to purple) */
+  border-radius: 2.5px;
+}
+
+/* Post Edit Form */
+.post-edit-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #ecf0f1; /* Light gray border */
+  position: relative;
+  z-index: 2;
+  animation: slideUp 0.8s ease-out;
+  transition: transform 0.3s ease;
+}
+
+.post-edit-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  color: #34495e;
+  margin-bottom: 8px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ecf0f1;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #34495e;
+  background: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+input[type="file"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+input.error,
+textarea.error {
+  border-color: #e74c3c;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  animation: shake 0.5s ease;
+}
+
+/* Image Preview */
+.image-preview {
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-out;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-preview:hover {
+  transform: scale(1.05);
+}
+
+/* Update Button */
+.update-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #3498db 0%, #8e44ad 100%); /* Blue to purple gradient */
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+}
+
+.update-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #8e44ad 0%, #3498db 100%); /* Reverse gradient on hover */
+}
+
+.update-btn:active {
+  transform: scale(0.98);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  font-size: 1.5rem;
+  color: #34495e;
+  text-align: center;
+  padding: 40px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .post-edit-container h2 {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h2 {
     font-size: 2rem;
-    font-weight: 700;
-    color: #1a3c34;
-    margin-bottom: 30px;
   }
-  
+
   .post-edit-form {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #1a3c34;
-    margin-bottom: 8px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: #1a3c34;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #2ecc71;
-    outline: none;
-  }
-  
-  .form-group input.error,
-  .form-group textarea.error {
-    border-color: #d32f2f;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  .error-text {
-    color: #d32f2f;
-    font-size: 0.85rem;
-    margin-top: 5px;
-  }
-  
-  .update-btn {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .update-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .loading-spinner {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #1a3c34;
     padding: 20px;
+    margin: 0 10px;
   }
+
+  input[type="text"],
+  textarea,
+  input[type="file"] {
+    padding: 10px;
+  }
+
+  .update-btn {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .post-edit-form {
+    padding: 15px;
+  }
+
+  .image-preview {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
