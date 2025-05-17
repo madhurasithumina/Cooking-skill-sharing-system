@@ -56,12 +56,24 @@ const WorkPlanList = () => {
     navigate(`/workplan/edit/${id}`);
   };
 
-  if (loading) return <div className="loading-spinner">Loading...</div>;
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
+  if (loading) return <div className="loading-spinner"><div className="spinner"></div>Loading...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="workplan-list-container">
-      <h2>Your Work Plans</h2>
+      <div className="header-section">
+        <h2>Your Work Plans</h2>
+        <button onClick={handleProfile} className="profile-btn">
+          <svg className="profile-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          Profile
+        </button>
+      </div>
       {workPlans.length > 0 ? (
         <div className="workplans-grid">
           {workPlans.map((plan) => (
@@ -76,7 +88,10 @@ const WorkPlanList = () => {
           ))}
         </div>
       ) : (
-        <p className="no-workplans">No work plans yet.</p>
+        <div className="no-workplans">
+          <p>No work plans yet.</p>
+          <button onClick={() => navigate('/workplan/create')} className="create-btn">Create Your First Plan</button>
+        </div>
       )}
     </div>
   );

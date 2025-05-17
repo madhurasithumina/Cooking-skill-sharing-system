@@ -1,245 +1,195 @@
-/* Workplan List Container */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 .workplan-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Subtle gradient background */
-  padding: 40px 20px;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Title */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50; /* Dark slate for contrast */
-  margin-bottom: 40px;
-  text-align: center;
-  position: relative;
-  animation: fadeInDown 1s ease-out;
+  color: #1a202c;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: linear-gradient(90deg, #2980b9, #3498db); /* Blue gradient underline */
-  border-radius: 2.5px;
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #4c51bf;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 81, 191, 0.3);
 }
 
-/* Workplans Grid */
+.profile-btn:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+}
+
+.profile-icon {
+  width: 24px;
+  height: 24px;
+}
+
 .workplans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  width: 100%;
-  max-width: 1200px;
+  gap: 1.5rem;
 }
 
-/* Workplan Card */
 .workplan-card {
-  background: #ffffff;
+  background: white;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  padding: 1.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  animation: slideUp 0.8s ease-out;
+  overflow: hidden;
+}
+
+.workplan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #4c51bf, #ed64a6);
 }
 
 .workplan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Workplan Card Content */
 .workplan-card h4 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #2c3e50;
-  padding: 20px 20px 10px;
-  margin: 0;
-  text-align: center;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(200, 240, 255, 0.5)); /* Subtle gradient */
-  border-bottom: 2px solid #3498db;
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
 }
 
 .workplan-card p {
+  color: #718096;
   font-size: 1rem;
-  color: #7f8c8d;
-  padding: 15px 20px;
-  margin: 0;
-  line-height: 1.6;
-  min-height: 100px; /* Ensure cards have consistent height */
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-/* Workplan Actions */
 .workplan-actions {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px 20px;
-  background: #f5f7fa;
-  border-top: 1px solid #dfe6e9;
+  gap: 1rem;
 }
 
-/* Buttons */
-.edit-btn,
-.delete-btn {
-  padding: 10px 20px;
+.edit-btn, .delete-btn, .create-btn {
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 25px;
-  font-size: 0.95rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .edit-btn {
-  background: #3498db;
-  color: #fff;
+  background: #2ecc71;
+  color: white;
 }
 
 .edit-btn:hover {
-  background: #2980b9;
-  transform: scale(1.05);
+  background: #27ae60;
 }
 
 .delete-btn {
-  background: #e74c3c;
-  color: #fff;
+  background: #e53e3e;
+  color: white;
 }
 
 .delete-btn:hover {
-  background: #c0392b;
-  transform: scale(1.05);
+  background: #c53030;
 }
 
-/* Loading Spinner */
+.create-btn {
+  background: #4c51bf;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.create-btn:hover {
+  background: #5a67d8;
+}
+
 .loading-spinner {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  text-align: center;
-  padding: 40px;
-  animation: pulse 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #4c51bf;
 }
 
-/* Error Message */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #4c51bf;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .error-message {
-  font-size: 1.2rem;
-  color: #e74c3c;
   text-align: center;
-  padding: 40px;
-  animation: shake 0.5s ease;
+  color: #e53e3e;
+  font-size: 1.2rem;
+  padding: 2rem;
 }
 
-/* No Workplans Message */
 .no-workplans {
-  font-size: 1.2rem;
-  color: #7f8c8d;
   text-align: center;
-  padding: 40px;
-  animation: fadeIn 1s ease-out;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 0 auto;
+  color: #718096;
+  font-size: 1.2rem;
+  padding: 2rem;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .workplans-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+  .workplan-list-container {
+    padding: 1rem;
   }
 
   h2 {
     font-size: 2rem;
   }
 
-  .workplan-card h4 {
-    font-size: 1.2rem;
-  }
-
-  .workplan-card p {
-    font-size: 0.95rem;
-    min-height: 80px;
-  }
-}
-
-@media (max-width: 480px) {
   .workplans-grid {
     grid-template-columns: 1fr;
   }
 
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  .workplan-card h4 {
-    font-size: 1.1rem;
-  }
-
-  .workplan-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .edit-btn,
-  .delete-btn {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .no-workplans {
-    font-size: 1rem;
-    padding: 20px;
+  .profile-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
