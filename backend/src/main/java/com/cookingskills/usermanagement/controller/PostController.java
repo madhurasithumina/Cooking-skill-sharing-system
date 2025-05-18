@@ -20,6 +20,8 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+
+    //POST request to create a new post
     @PostMapping
     public ResponseEntity<?> createPost(@RequestBody Post post) {
         try {
@@ -40,6 +42,7 @@ public class PostController {
         }
     }
 
+    //GET request to get all posts by user ID
     @GetMapping
     public ResponseEntity<?> getPostsByUserId(@RequestParam String userId) {
         try {
@@ -57,6 +60,7 @@ public class PostController {
         }
     }
 
+    //GET request to get all posts
     @GetMapping("/all")
     public ResponseEntity<?> getAllPosts(@RequestHeader(value = "Origin", required = false) String origin) {
         try {
@@ -75,6 +79,7 @@ public class PostController {
         }
     }
 
+    //GET request to get a post by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getPostById(@PathVariable String id) {
         try {
@@ -90,6 +95,7 @@ public class PostController {
         }
     }
 
+    //PUT request to update a post
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePost(@PathVariable String id, @RequestBody Post post) {
         try {
@@ -106,6 +112,7 @@ public class PostController {
         }
     }
 
+    //DELETE request to delete a post
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePost(@PathVariable String id) {
         try {
@@ -122,6 +129,7 @@ public class PostController {
         }
     }
 
+    //Error response class
     static class ErrorResponse {
         private String message;
 
