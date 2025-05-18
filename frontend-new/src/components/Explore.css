@@ -204,7 +204,7 @@
   color: #fff;
 }
 
-/* Comment Section */
+
 .comment-form {
   display: flex;
   gap: 10px;
@@ -329,7 +329,7 @@
   color: #fff;
 }
 
-/* Footer */
+
 .explore-footer {
   text-align: center;
   padding: 20px;
@@ -339,7 +339,7 @@
   margin-top: 20px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .posts-list {
     gap: 15px;
