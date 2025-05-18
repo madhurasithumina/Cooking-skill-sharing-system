@@ -1,7 +1,7 @@
 
 .workplan-edit-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* Subtle blue gradient background */
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); 
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -30,11 +30,11 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 5px;
-  background: linear-gradient(90deg, #e67e22, #f1c40f); /* Orange to yellow gradient underline */
+  background: linear-gradient(90deg, #e67e22, #f1c40f); 
   border-radius: 2.5px;
 }
 
-/* Workplan Edit Form */
+
 .workplan-edit-form {
   background: rgba(255, 255, 255, 0.98);
   padding: 40px;
@@ -54,7 +54,7 @@ h2::after {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Form Group */
+
 .form-group {
   margin-bottom: 25px;
   position: relative;
