@@ -54,7 +54,7 @@ h2::after {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Form Group */
+
 .form-group {
   margin-bottom: 25px;
   position: relative;
@@ -102,7 +102,7 @@ textarea.error {
   animation: shake 0.5s ease;
 }
 
-/* Image Preview */
+
 .image-preview {
   max-width: 200px;
   max-height: 200px;
@@ -118,7 +118,7 @@ textarea.error {
   transform: scale(1.05);
 }
 
-/* Update Button */
+
 .update-btn {
   width: 100%;
   padding: 15px;
@@ -127,7 +127,7 @@ textarea.error {
   font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(90deg, #3498db 0%, #8e44ad 100%); /* Blue to purple gradient */
+  background: linear-gradient(90deg, #3498db 0%, #8e44ad 100%);
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
@@ -135,14 +135,14 @@ textarea.error {
 
 .update-btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(90deg, #8e44ad 0%, #3498db 100%); /* Reverse gradient on hover */
+  background: linear-gradient(90deg, #8e44ad 0%, #3498db 100%); 
 }
 
 .update-btn:active {
   transform: scale(0.98);
 }
 
-/* Loading Spinner */
+
 .loading-spinner {
   font-size: 1.5rem;
   color: #34495e;
@@ -151,7 +151,7 @@ textarea.error {
   animation: pulse 1.5s infinite;
 }
 
-/* Animations */
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -192,7 +192,7 @@ textarea.error {
   to { opacity: 1; }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   h2 {
     font-size: 2rem;
