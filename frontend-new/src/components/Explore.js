@@ -6,7 +6,7 @@ import './Explore.css';
 const Explore = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  const [likes, setLikes] = useState({}); // { postId: [{ userId, username }] }
+  const [likes, setLikes] = useState({}); 
   const [comments, setComments] = useState({}); // { postId: [{ id, userId, username, content, createdAt }] }
   const [commentContent, setCommentContent] = useState({}); // { postId: string }
   const [editingComment, setEditingComment] = useState(null); // Comment being edited
@@ -19,7 +19,7 @@ const Explore = () => {
         const allPosts = await getAllPosts();
         setPosts(allPosts);
 
-        // Fetch likes and comments for each post
+        
         const likesData = {};
         const commentsData = {};
         for (const post of allPosts) {
