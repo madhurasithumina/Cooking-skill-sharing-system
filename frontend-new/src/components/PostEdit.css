@@ -1,7 +1,7 @@
-/* Post Edit Container */
+
 .post-edit-container {
   min-height: 100vh;
-  background: #fbf6f6; /* White background */
+  background: #fbf6f6; 
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -11,11 +11,11 @@
   overflow-x: hidden;
 }
 
-/* Title */
+
 h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #34495e; /* Darker gray-blue for contrast */
+  color: #34495e; 
   margin-bottom: 40px;
   text-align: center;
   position: relative;
@@ -30,11 +30,11 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 5px;
-  background: linear-gradient(90deg, #3498db, #8e44ad); /* Gradient underline (blue to purple) */
+  background: linear-gradient(90deg, #3498db, #8e44ad); 
   border-radius: 2.5px;
 }
 
-/* Post Edit Form */
+
 .post-edit-form {
   background: rgba(255, 255, 255, 0.95);
   padding: 40px;
@@ -42,7 +42,7 @@ h2::after {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
-  border: 2px solid #ecf0f1; /* Light gray border */
+  border: 2px solid #ecf0f1; 
   position: relative;
   z-index: 2;
   animation: slideUp 0.8s ease-out;
