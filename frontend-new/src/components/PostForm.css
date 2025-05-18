@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #2a4066 0%, #4a6a8a 100%); /* Deep navy to slate blue gradient */
+  background: linear-gradient(135deg, #2a4066 0%, #4a6a8a 100%); 
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   position: relative;
@@ -51,7 +51,7 @@ h2 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 600px;
-  border: 2px solid #8a9a5b; /* Herb green border */
+  border: 2px solid #8a9a5b; 
   position: relative;
   z-index: 2;
   animation: slideUp 1s ease-out;
@@ -123,7 +123,7 @@ textarea.error {
   font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(90deg, #8a9a5b 0%, #6b8e23 100%); /* Herb green gradient */
+  background: linear-gradient(90deg, #8a9a5b 0%, #6b8e23 100%);
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 0 5px 20px rgba(138, 154, 91, 0.4);
@@ -138,7 +138,7 @@ textarea.error {
   transform: scale(0.98);
 }
 
-/* Animations */
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -178,7 +178,6 @@ textarea.error {
   100% { transform: translateX(0); }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   h2 {
     font-size: 2.2rem;

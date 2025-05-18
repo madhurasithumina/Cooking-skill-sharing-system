@@ -51,18 +51,22 @@ public class Post {
         return username;
     }
 
+    //set username
     public void setUsername(String username) {
         this.username = username;
     }
 
+    //get title
     public String getTitle() {
         return title;
     }
 
+    //set title
     public void setTitle(String title) {
         this.title = title;
     }
 
+    //get description
     public String getDescription() {
         return description;
     }
