@@ -1,7 +1,7 @@
 
 .workplan-edit-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); /* Subtle blue gradient background */
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); 
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
   display: flex;
